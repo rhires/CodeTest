@@ -9,6 +9,11 @@
 </form>
 
 <br />
+@{
+    if(Model != null)
+    {
+        @Html.Raw(Model.NumberString)
+    }
+}
 
-@Html.Raw(Model.NumberString)
 

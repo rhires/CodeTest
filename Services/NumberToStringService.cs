@@ -17,90 +17,127 @@ namespace codeTest.Services
             string[] tens = {
                 "twenty", "thirty", "forty", "fifty", "sixty", "seventy", "eighty", "ninety"
             };
-
-            string[] other = {
-                "and", "-"
-            };
+            string cents;
         public NumberModel ConvertNumberToString(string startingNumber)
         {   
-            char[] array = startingNumber.ToCharArray();
-            string model;
-            var numberModel = new  NumberModel();
-            foreach(var num in array)
+            char[] array = startingNumber.Split(".")[0].ToCharArray();
+            
+            if(startingNumber.Contains("."))
             {
+                cents = startingNumber.Split(".")[1];
+            }
+            
+            var numberModel = new NumberModel();
+            
                 if(array.Length == 4)
                 {
-                    if(num == '0')
-                    {
-                        break;
-                    }
                     var number = int.Parse(array[0].ToString()); 
-                    model = digits[number - 1] + " " + columns[0] + " ";
+                    if (number != 0)
+                    {
+                        numberModel.NumberString = $"{digits[number - 1]} {columns[0]} ";
+                    }
 
                     number = int.Parse(array[1].ToString()); 
-                    if (num != '0')
-                    model += digits[number - 1] + " " + columns[1] + " ";
+                    if (number != 0)
+                    numberModel.NumberString += digits[number - 1] + " " + columns[1] + " ";
 
                     number = int.Parse(array[2].ToString()); 
-                    if (number == 1) //teens
+                    if (number == 1 && number != 0) //teens
                     {
                         number = 10 + int.Parse(array[3].ToString());
-                        model += digits[number - 1];
+                        numberModel.NumberString += digits[number - 1];
+                    }
+                    else if (number !=0)
+                    {   
+                        numberModel.NumberString += tens[number - 2] + "-";
+                        number = int.Parse(array[3].ToString());
+                        numberModel.NumberString += digits[number - 1];
                     }
                     else
-                    {   
-                        model += tens[number - 2] + " ";
+                    {
                         number = int.Parse(array[3].ToString());
-                        model += digits[number - 1];
+                        if (number !=0)
+                        numberModel.NumberString += digits[number - 1];
                     }
-                   numberModel.NumberString = model;
+
                 }
 
                 if(array.Length == 3)
                 {
-                    var number = int.Parse(array[1].ToString()); 
-                    model = digits[number - 1] + " " + columns[1] + " ";
+                    var number = int.Parse(array[0].ToString()); 
+                    if (number != 0)
+                    numberModel.NumberString = digits[number - 1] + " " + columns[1] + " ";
 
                     number = int.Parse(array[1].ToString()); 
-                    if (number == 1) //teens
+                    if (number == 1 && number != 0) //teens
                     {
                         number = 10 + int.Parse(array[2].ToString());
-                        model += digits[number - 1];
+                        numberModel.NumberString += digits[number - 1];
+                    }
+                    else if(number != 0)
+                    {
+                        numberModel.NumberString += tens[number - 2] + "-";
+                        number = int.Parse(array[2].ToString());
+                        numberModel.NumberString += digits[number - 1];
                     }
                     else
                     {   
-                        model += tens[number - 2] + " ";
                         number = int.Parse(array[2].ToString());
-                        model += digits[number - 1];
+                        if (number !=0)
+                        numberModel.NumberString += digits[number - 1];
                     }
-                    numberModel.NumberString = model;
+                   
                 }
 
                 if(array.Length == 2)
                 {
                     var number = int.Parse(array[0].ToString()); 
-                    if (number == 1) //teens
+                    if (number == 1 && number != 0) //teens
                     {
                         number = 10 + int.Parse(array[1].ToString());
-                        model = digits[number - 1];
+                        numberModel.NumberString = digits[number - 1];
+                    }
+                    else if(number != 0)
+                    {
+                        numberModel.NumberString = tens[number - 2] + "-";
+                        number = int.Parse(array[0].ToString());
+                        numberModel.NumberString += digits[number - 1];
                     }
                     else
                     {   
-                        model = tens[number - 2] + " ";
                         number = int.Parse(array[0].ToString());
-                        model += digits[number - 1];
+                        if (number != 0)
+                        {
+                            numberModel.NumberString += digits[number - 1];
+                        }
+                        else 
+                        {
+                            number = int.Parse(array[1].ToString());
+                            numberModel.NumberString += digits[number - 1];
+                        }
+
                     }
-                    numberModel.NumberString = model;
+                    
                 }
 
                 if(array.Length == 1)
                 {
                     var number = int.Parse(array[0].ToString());
-                    model = digits[number - 1];
-                    numberModel.NumberString = model;                    
+                    if (number == 0)
+                    {
+                        numberModel.NumberString = "zero";
+                    }
+                    else
+                    {
+                        numberModel.NumberString = digits[number - 1]; 
+                    }
+                               
                 }
+            if (cents == "")
+            {
+                cents = "00";
             }
-            
+            numberModel.NumberString += $" and {cents}/100 dollars";
             return numberModel;
         }
     }

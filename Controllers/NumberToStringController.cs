@@ -16,7 +16,7 @@ namespace codeTest.Controllers
 
         public IActionResult Index(string startingNumber)
         {
-            if (int.TryParse(startingNumber, out int result))
+            if (int.TryParse(startingNumber, out int result) || decimal.TryParse(startingNumber, out decimal decimalResult))
             {
                 var model = _service.ConvertNumberToString(startingNumber);
                 return View(model);
