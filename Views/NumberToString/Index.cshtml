@@ -1,0 +1,14 @@
+@model codeTest.Models.NumberModel
+
+<h1>Welcome to the number to Stringy generator!</h1>
+
+<form asp-controller="NumberToString" asp-action="Index" method="get">
+    Starting Number:  <input asp-for="StartingNumber" /> <br />
+    
+    <button type="submit">Get Stringy!</button>
+</form>
+
+<br />
+
+@Html.Raw(Model.NumberString)
+

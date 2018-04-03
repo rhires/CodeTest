@@ -1,0 +1,10 @@
+/Users/russellhires/Documents/Projects/codeTest/bin/Debug/netcoreapp2.0/codeTest.deps.json
+/Users/russellhires/Documents/Projects/codeTest/bin/Debug/netcoreapp2.0/codeTest.runtimeconfig.json
+/Users/russellhires/Documents/Projects/codeTest/bin/Debug/netcoreapp2.0/codeTest.runtimeconfig.dev.json
+/Users/russellhires/Documents/Projects/codeTest/bin/Debug/netcoreapp2.0/codeTest.dll
+/Users/russellhires/Documents/Projects/codeTest/bin/Debug/netcoreapp2.0/codeTest.pdb
+/Users/russellhires/Documents/Projects/codeTest/obj/Debug/netcoreapp2.0/codeTest.csproj.CoreCompileInputs.cache
+/Users/russellhires/Documents/Projects/codeTest/obj/Debug/netcoreapp2.0/codeTest.AssemblyInfoInputs.cache
+/Users/russellhires/Documents/Projects/codeTest/obj/Debug/netcoreapp2.0/codeTest.AssemblyInfo.cs
+/Users/russellhires/Documents/Projects/codeTest/obj/Debug/netcoreapp2.0/codeTest.dll
+/Users/russellhires/Documents/Projects/codeTest/obj/Debug/netcoreapp2.0/codeTest.pdb
